@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopLuxury | Premium Fashion</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Raleway', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        luxury: {
+                            gold: '#D4AF37',
+                            dark: '#1A1A1A',
+                            light: '#F5F5F5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-luxury-light text-gray-800 dark:bg-luxury-dark dark:text-gray-200 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-serif font-bold text-luxury-gold">ShopLuxury</a>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="hover:text-luxury-gold transition">Home</a>
+                    <a href="#products" class="hover:text-luxury-gold transition">Collections</a>
+                    <a href="#about" class="hover:text-luxury-gold transition">About</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block"></i>
+                    </button>
+                    <a href="#cart"
+                        class="relative p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cartCount"
+                            class="absolute -top-1 -right-1 bg-luxury-gold text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </a>
+                    <button class="md:hidden p-2" id="mobileMenuButton">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-2 pb-2">
+                <a href="#" class="block hover:text-luxury-gold transition">Home</a>
+                <a href="#products" class="block hover:text-luxury-gold transition">Collections</a>
+                <a href="#about" class="block hover:text-luxury-gold transition">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6">Elevate Your <span
+                        class="text-luxury-gold">Style</span></h1>
+                <p class="text-lg mb-8 max-w-lg">Discover our exclusive collection of luxury fashion and accessories
+                    crafted for the discerning individual.</p>
+                <a href="#products"
+                    class="bg-luxury-gold text-white px-8 py-3 rounded-md hover:bg-opacity-90 transition transform hover:scale-105 inline-block">
+                    Shop Now
+                </a>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    alt="Luxury Fashion"
+                    class="rounded-lg shadow-xl w-full max-w-2xl mx-auto hover:shadow-2xl transition-shadow duration-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section id="products" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-serif font-bold text-center mb-12">Our <span
+                    class="text-luxury-gold">Collections</span></h2>
+
+            <!-- Product Filters -->
+            <div class="flex justify-center space-x-4 mb-10">
+                <button class="filter-btn active px-4 py-2 rounded-full" data-filter="all">All</button>
+                <button class="filter-btn px-4 py-2 rounded-full" data-filter="men">Men</button>
+                <button class="filter-btn px-4 py-2 rounded-full" data-filter="women">Women</button>
+                <button class="filter-btn px-4 py-2 rounded-full" data-filter="accessories">Accessories</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="productGrid">
+                <!-- Products will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="About Us"
+                        class="rounded-lg shadow-xl w-full hover:shadow-2xl transition-shadow duration-300">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-serif font-bold mb-6">Our <span class="text-luxury-gold">Story</span></h2>
+                    <p class="mb-4">Founded in 2015, ShopLuxury began as a small boutique with a passion for exceptional
+                        craftsmanship and timeless design.</p>
+                    <p class="mb-6">Today, we curate the finest selection of luxury goods from around the world,
+                        bringing our customers unparalleled quality and style.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-luxury-gold mb-2">10+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+                            <h3 class="font-bold text-luxury-gold mb-2">500+</h3>
+                            <p>Luxury Brands</p>
+                        </div>
+                    </div>
+                    <a href="#contact"
+                        class="border border-luxury-gold text-luxury-gold px-6 py-2 rounded-md hover:bg-luxury-gold hover:text-white transition">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-md max-h-[80vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold">Your Cart</h3>
+                    <button id="closeCart" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div id="cartItems" class="space-y-4">
+                    <!-- Cart items will be loaded here -->
+                    <p id="emptyCartMsg" class="text-center py-8">Your cart is empty</p>
+                </div>
+
+                <div class="border-t border-gray-200 dark:border-gray-700 mt-6 pt-6">
+                    <div class="flex justify-between mb-4">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal">Rs. 0.00</span>
+                    </div>
+                    <button class="w-full bg-luxury-gold text-white py-3 rounded-md hover:bg-opacity-90 transition">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-900 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-4 text-luxury-gold">ShopLuxury</h3>
+                    <p class="mb-4"><span class="hire-me-highlight">Hire Me!</span>
+                        Transfoming concepts into captivating websites that leave a lasting impression!</p>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>palbharti306@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 8153947250</span>
+                    </div><br>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/pal-bharti-726707285/" class="text-gray-600 dark:text-gray-400 hover:text-luxury-gold transition"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/palbhartis____/" class="text-gray-600 dark:text-gray-400 hover:text-luxury-gold transition"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://x.com/iambhartipal" class="text-gray-600 dark:text-gray-400 hover:text-luxury-gold transition"><i
+                                class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-luxury-gold transition">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-luxury-gold transition">Men's Collection</a></li>
+                        <li><a href="#" class="hover:text-luxury-gold transition">Women's Collection</a></li>
+                        <li><a href="#" class="hover:text-luxury-gold transition">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-luxury-gold transition">Customer Service</a></li>
+                        <li><a href="#" class="hover:text-luxury-gold transition">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-luxury-gold transition">Returns & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-luxury-gold transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="mb-4">Subscribe for exclusive offers and updates.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email"
+                            class="px-4 py-2 w-full rounded-l-md border border-gray-300 dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-luxury-gold">
+                        <button class="bg-luxury-gold text-white px-4 py-2 rounded-r-md hover:bg-opacity-90 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-200 dark:border-gray-800 mt-8 pt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+                <p>© 2025 Pal Bharti. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
